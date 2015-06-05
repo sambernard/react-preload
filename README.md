@@ -1,4 +1,5 @@
 # React Preload
+[![npm version](https://badge.fury.io/js/react-preload.svg)](http://badge.fury.io/js/react-preload)
 
 A React component to preload images. It renders a passed component during the loader phase, and renders it's children once the images have been successfully fetched.
 
@@ -32,26 +33,26 @@ var Preload = require('react-preload').Preload;
    propTypes: {
 		//Rendered on success
 		children: React.PropTypes.node.isRequired,
-		
+
 		//Rendered during load
 		loadingIndicator: React.PropTypes.node.isRequired,
-		
+
 		//Array of image urls to be preloaded
 		images: React.PropTypes.array,
-		
+
 		//If set, the preloader will automatically show
 		//the children content after this amount of time
 		autoResolveDelay: React.PropTypes.number,
-		
+
 		//Error callback. Is passed the error
 		onError: React.PropTypes.func,
-		
+
 		//Success callback
 		onSuccess: React.PropTypes.func,
-		
+
 		//Whether or not we should still show the content
 		//even if there is a preloading error
-		resolveOnError: React.PropTypes.bool            
+		resolveOnError: React.PropTypes.bool
     }
 ```
 ## License
