@@ -19,10 +19,15 @@ var Preload = require('react-preload').Preload;
 ```
 
 ```javascript
+var loadingIndicator = (<div>Loading...</div>)
+
 <Preload
-  onEnter={this._handleWaypointEnter}
-  onLeave={this._handleWaypointLeave}
-  threshold={0.2}>
+  loadingIndicator={loadingIndicator}
+  images=['http://fakeimg.pl/380x380/AA0000/']
+  autoResolveDelay={3000}
+  onError={function(err){console.log(err)}}
+  resolveOnError={true}
+  >
 	{/* content to be rendered once loading is complete*/}
 </Preload>
 ```
