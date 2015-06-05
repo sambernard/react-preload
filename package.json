@@ -1,0 +1,34 @@
+{
+  "name": "react-preload",
+  "version": "0.0.1",
+  "description": "A component to manage preloading media before showing a component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "./node_modules/react-tools/bin/jsx --harmony -x jsx ./jsx ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sambernard/react-preload.git"
+  },
+  "keywords": [
+    "react",
+    "preload",
+    "preloader",
+    "loader",
+    "react-component"
+  ],
+  "author": "Sam Bernard <sambernard@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sambernard/react-preload/issues"
+  },
+  "homepage": "https://github.com/sambernard/react-preload",
+  "peerDependencies": {
+    "react": ">=0.12.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "react-tools": "~0.12.0"
+  }
+}
