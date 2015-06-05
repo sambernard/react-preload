@@ -20,12 +20,14 @@ var Preload = require('react-preload').Preload;
 
 ```javascript
 var loadingIndicator = (<div>Loading...</div>)
+var images = [];
 
 <Preload
   loadingIndicator={loadingIndicator}
-  images=['http://fakeimg.pl/380x380/AA0000/']
+  images={images}
   autoResolveDelay={3000}
-  onError={function(err){console.log(err)}}
+  onError={this._handleImageLoadError}
+  onSuccess={this._handleImageLoadSuccess}
   resolveOnError={true}
   >
 	{/* content to be rendered once loading is complete*/}
