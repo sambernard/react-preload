@@ -25,13 +25,18 @@ var Preload = React.createClass({displayName: "Preload",
 
         //Whether or not we should still show the content
         //even if there is a preloading error
-        resolveOnError: React.PropTypes.bool
+        resolveOnError: React.PropTypes.bool,
+
+        //Whether or not we should mount the child content after
+        //images have finished loading (or after autoResolveDelay)
+        mountChildren: React.PropTypes.bool
     },
 
     getDefaultProps: function () {
         return {
             images: [],
-            resolveOnError: true
+            resolveOnError: true,
+            mountChildren: true
         };
     },
 
@@ -84,7 +89,7 @@ var Preload = React.createClass({displayName: "Preload",
     },
 
     render: function(){
-        return (this.state.ready?this.props.children:this.props.loadingIndicator);
+        return (this.state.ready && this.props.mountChildren ? this.props.children : this.props.loadingIndicator);
     }
 
 });
