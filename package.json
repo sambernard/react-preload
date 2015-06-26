@@ -4,8 +4,7 @@
   "description": "A component to manage preloading media before showing a component",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "./node_modules/react-tools/bin/jsx --harmony -x jsx ./jsx ."
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
