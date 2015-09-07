@@ -70,6 +70,10 @@ var Preload = React.createClass({displayName: "Preload",
 
     _handleSuccess: function () {
         clearTimeout(this.autoResolveTimeout);
+        
+        if(this.state.ready) {
+            return;
+        }
 
         this.setState({ready: true});
 
