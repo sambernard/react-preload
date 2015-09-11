@@ -1,5 +1,5 @@
-var Preload = require('./Preload');
-
 module.exports = {
-    Preload: Preload
+    Preload: require('./Preload'),
+    ImageCache: require('./ImageCache'),
+    ImageHelper: require('./ImageHelper')
 };

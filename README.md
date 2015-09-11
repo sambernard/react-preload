@@ -67,6 +67,13 @@ var images = [];
         mountChildren: React.PropTypes.bool
     }
 ```
+
+## Additional Details
+
+This module also exposes `ImageCache` and `ImageHelper` which can be used to preload images
+directly, and can be accessed via `require('react-preload').ImageCache` and
+`require('react-preload').ImageHelper` respectively.
+
 ## License
 
 [MIT][mit-license]
