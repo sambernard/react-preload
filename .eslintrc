@@ -1,0 +1,17 @@
+{
+    "ecmaFeatures": {
+        "modules": true,
+        "experimentalObjectRestSpread": true,
+        "jsx": true
+    },
+    "env": {
+        "browser": false,
+        "es6": true,
+        "node": true
+    },
+    "globals": {
+        "document": false,
+        "navigator": false,
+        "window": false
+    }
+}
