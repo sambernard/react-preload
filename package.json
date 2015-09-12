@@ -1,33 +1,36 @@
 {
-  "name": "react-preload",
-  "version": "0.1.1",
-  "description": "A component to manage preloading media before showing a component",
-  "main": "lib/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:sambernard/react-preload.git"
-  },
-  "keywords": [
+    "name": "react-preload",
+    "version": "0.1.1",
+    "description": "A component to manage preloading media before showing a component",
+    "main": "lib/index.js",
+    "scripts": {
+        "build": "./scripts/build.sh",
+        "test": "./node_modules/.bin/eslint -c .eslintrc modules/*",
+        "prepublish": "npm run build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:sambernard/react-preload.git"
+    },
+    "keywords": [
     "react",
     "preload",
     "preloader",
     "loader",
     "react-component"
   ],
-  "author": "Sam Bernard <sambernard@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sambernard/react-preload/issues"
-  },
-  "homepage": "https://github.com/sambernard/react-preload",
-  "peerDependencies": {
-    "react": ">=0.12.0"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "babel": "^5.8.23"
-  }
+    "author": "Sam Bernard <sambernard@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sambernard/react-preload/issues"
+    },
+    "homepage": "https://github.com/sambernard/react-preload",
+    "peerDependencies": {
+        "react": ">=0.12.0"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "babel": "^5.8.23",
+        "eslint": "^1.4.1"
+    }
 }
