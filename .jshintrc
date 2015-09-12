@@ -1,0 +1,16 @@
+{
+    "indent": 4,
+    "latedef": false,
+    "newcap": true,
+    "undef": true,
+    "unused": true,
+    "es5": false,
+    "esnext": true,
+    "globalstrict": false,
+    "sub": true,
+    "browser": true,
+    "browserify": true,
+    "devel": true,
+    "node": true,
+    "globals": {"Promise": true}
+}
