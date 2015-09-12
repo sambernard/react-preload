@@ -2,7 +2,7 @@
   "name": "react-preload",
   "version": "0.1.1",
   "description": "A component to manage preloading media before showing a component",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,5 +27,7 @@
     "react": ">=0.12.0"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "babel": "^5.8.23"
+  }
 }

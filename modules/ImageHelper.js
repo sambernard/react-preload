@@ -1,12 +1,12 @@
-var imageCache = require('./imageCache');
+import ImageCache from './ImageCache';
 
-var ImageHelper = {
+let ImageHelper = {
     loadImage: function (url) {
 
-        var image = imageCache.get(url);
+        let image = ImageCache.get(url);
 
         return new Promise(function (resolve, reject) {
-            var handleSuccess = function(){
+            let handleSuccess = function () {
                 resolve(image);
             };
 
@@ -22,7 +22,7 @@ var ImageHelper = {
     },
 
     loadImages: function (urls) {
-        var promises =
+        let promises =
             urls
             .map(this.loadImage.bind(this));
         return Promise.all(promises);
@@ -30,8 +30,8 @@ var ImageHelper = {
 
     //preload without caring about the result
     stuffImages: function (urls) {
-        imageCache.stuff(urls);
+        ImageCache.stuff(urls);
     },
 };
 
-module.exports = ImageHelper;
+export default ImageHelper;

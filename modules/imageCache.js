@@ -1,7 +1,7 @@
-var hash = {};
-var cache = [];
+let hash = {};
+let cache = [];
 
-function add (url) {
+let add = url => {
     if (!hash[url]) {
         hash[url] = new Image();
         hash[url].src = url;
@@ -9,19 +9,19 @@ function add (url) {
         cache.push(hash[url]);
     }
     return hash[url];
-}
+};
 
-function get (url) {
+let get = url => {
     return add(url);
-}
+};
 
-function stuff (urls) {
+let stuff = (urls) => {
     if (urls.length > 0) {
         urls.map(add);
     }
-}
+};
 
-var imageCache = {
+let ImageCache = {
     add: add,
     stuff: stuff,
     get: get,
@@ -29,4 +29,4 @@ var imageCache = {
     cache: cache
 };
 
-module.exports = imageCache;
+export default ImageCache;
