@@ -1,35 +1,35 @@
 import ImageCache from './ImageCache';
 
-let ImageHelper = {
-    loadImage: function (url) {
+const ImageHelper = {
+    loadImage(url) {
+        const image = ImageCache.get(url);
 
-        let image = ImageCache.get(url);
-
-        return new Promise(function (resolve, reject) {
-            let handleSuccess = function () {
+        return new Promise((resolve, reject) => {
+            const handleSuccess = () => {
                 resolve(image);
+            };
+            const handleError = () => {
+                console.error('IMAGE FAIL', image);
+                reject(image);
             };
 
             if (image.naturalWidth && image.naturalHeight) {
-                //Image is loaded, go ahead and change the state
+                // image is loaded, go ahead and change the state
                 handleSuccess();
             } else {
                 image.addEventListener('load', handleSuccess, false);
-                image.addEventListener('error', reject, false);
+                image.addEventListener('error', handleError, false);
             }
-
         });
     },
 
-    loadImages: function (urls) {
-        let promises =
-            urls
-            .map(this.loadImage.bind(this));
+    loadImages(urls) {
+        const promises = urls.map(this.loadImage.bind(this));
         return Promise.all(promises);
     },
 
-    //preload without caring about the result
-    stuffImages: function (urls) {
+    // preload without caring about the result
+    stuffImages(urls) {
         ImageCache.stuff(urls);
     },
 };

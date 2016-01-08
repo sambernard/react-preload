@@ -1,7 +1,7 @@
-let hash = {};
-let cache = [];
+const hash = {};
+const cache = [];
 
-let add = url => {
+const add = url => {
     if (!hash[url]) {
         hash[url] = new Image();
         hash[url].src = url;
@@ -11,22 +11,22 @@ let add = url => {
     return hash[url];
 };
 
-let get = url => {
+const get = url => {
     return add(url);
 };
 
-let stuff = (urls) => {
+const stuff = (urls) => {
     if (urls.length > 0) {
         urls.map(add);
     }
 };
 
-let ImageCache = {
-    add: add,
-    stuff: stuff,
-    get: get,
-    hash: hash,
-    cache: cache
+const ImageCache = {
+    add,
+    stuff,
+    get,
+    hash,
+    cache,
 };
 
 export default ImageCache;

@@ -1,14 +1,51 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 import ImageHelper from './ImageHelper';
 
-class Preload extends React.Component {
+const propTypes = {
+    // Rendered on success
+    children: PropTypes.node.isRequired,
 
+    // Rendered during load
+    loadingIndicator: PropTypes.node.isRequired,
+
+    // Array of image urls to be preloaded
+    images: PropTypes.array,
+
+    // If set, the preloader will automatically show
+    // the children content after this amount of time
+    autoResolveDelay: PropTypes.number,
+
+    // Error callback. Is passed the error
+    onError: PropTypes.func,
+
+    // Success callback
+    onSuccess: PropTypes.func,
+
+    // Whether or not we should still show the content
+    // even if there is a preloading error
+    resolveOnError: PropTypes.bool,
+
+    // Whether or not we should mount the child content after
+    // images have finished loading (or after autoResolveDelay)
+    mountChildren: PropTypes.bool,
+};
+
+const defaultProps = {
+    images: [],
+    resolveOnError: true,
+    mountChildren: true,
+};
+
+class Preload extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            ready: false
+            ready: false,
         };
+
+        this._handleSuccess = this._handleSuccess.bind(this);
+        this._handleError = this._handleError.bind(this);
     }
 
     componentWillMount() {
@@ -30,18 +67,23 @@ class Preload extends React.Component {
     }
 
     componentWillUnmount() {
-        clearTimeout(this.autoResolveTimeout);
+        if (this.autoResolveTimeout) {
+            clearTimeout(this.autoResolveTimeout);
+        }
     }
 
     _handleSuccess() {
-        clearTimeout(this.autoResolveTimeout);
+        if (this.autoResolveTimeout) {
+            clearTimeout(this.autoResolveTimeout);
+            console.warn('images failed to preload, auto resolving');
+        }
 
         if (this.state.ready) {
             return;
         }
 
         this.setState({
-            ready: true
+            ready: true,
         });
 
         if (this.props.onSuccess) {
@@ -64,41 +106,7 @@ class Preload extends React.Component {
     }
 }
 
-Preload.propTypes = {
-    //Rendered on success
-    children: React.PropTypes.node.isRequired,
-
-    //Rendered during load
-    loadingIndicator: React.PropTypes.node.isRequired,
-
-    //Array of image urls to be preloaded
-    images: React.PropTypes.array,
-
-    //If set, the preloader will automatically show
-    //the children content after this amount of time
-    autoResolveDelay: React.PropTypes.number,
-
-    //Error callback. Is passed the error
-    onError: React.PropTypes.func,
-
-    //Success callback
-    onSuccess: React.PropTypes.func,
-
-    //Whether or not we should still show the content
-    //even if there is a preloading error
-    resolveOnError: React.PropTypes.bool,
-
-    //Whether or not we should mount the child content after
-    //images have finished loading (or after autoResolveDelay)
-    mountChildren: React.PropTypes.bool
-};
-
-Preload.getDefaultProps = () => {
-    return {
-        images: [],
-        resolveOnError: true,
-        mountChildren: true
-    };
-};
+Preload.propTypes = propTypes;
+Preload.defaultProps = defaultProps;
 
 export default Preload;
