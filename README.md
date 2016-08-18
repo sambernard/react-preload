@@ -40,7 +40,7 @@ var images = [];
 ```javascript
    propTypes: {
 		//Rendered on success
-		children: React.PropTypes.node.isRequired,
+		children: React.PropTypes.element.isRequired,
 
 		//Rendered during load
 		loadingIndicator: React.PropTypes.node.isRequired,
