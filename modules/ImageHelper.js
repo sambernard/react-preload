@@ -13,9 +13,16 @@ const ImageHelper = {
                 reject(image);
             };
 
-            if (image.naturalWidth && image.naturalHeight) {
+            if (image.complete) {
                 // image is loaded, go ahead and change the state
-                handleSuccess();
+
+                if(image.naturalWidth && image.naturalHeight) {
+                    // successful load
+                    handleSuccess();
+                } else {
+                    handleError();
+                }
+
             } else {
                 image.addEventListener('load', handleSuccess, false);
                 image.addEventListener('error', handleError, false);
