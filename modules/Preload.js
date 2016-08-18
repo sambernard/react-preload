@@ -34,6 +34,7 @@ const defaultProps = {
     images: [],
     resolveOnError: true,
     mountChildren: true,
+    loadingIndicator: null,
 };
 
 class Preload extends Component {
