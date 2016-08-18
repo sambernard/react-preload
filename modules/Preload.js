@@ -3,7 +3,7 @@ import ImageHelper from './ImageHelper';
 
 const propTypes = {
     // Rendered on success
-    children: PropTypes.node.isRequired,
+    children: PropTypes.element.isRequired,
 
     // Rendered during load
     loadingIndicator: PropTypes.node.isRequired,
