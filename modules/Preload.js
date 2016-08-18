@@ -46,6 +46,7 @@ class Preload extends Component {
 
         this._handleSuccess = this._handleSuccess.bind(this);
         this._handleError = this._handleError.bind(this);
+        this._mounted = false;
     }
 
     componentWillMount() {
@@ -55,6 +56,7 @@ class Preload extends Component {
     }
 
     componentDidMount() {
+        this._mounted = true;
         if (!this.state.ready) {
             ImageHelper
                 .loadImages(this.props.images)
@@ -67,6 +69,7 @@ class Preload extends Component {
     }
 
     componentWillUnmount() {
+        this._mounted = false;
         if (this.autoResolveTimeout) {
             clearTimeout(this.autoResolveTimeout);
         }
@@ -78,7 +81,7 @@ class Preload extends Component {
             console.warn('images failed to preload, auto resolving');
         }
 
-        if (this.state.ready) {
+        if (this.state.ready || !this._mounted) {
             return;
         }
 
@@ -92,6 +95,11 @@ class Preload extends Component {
     }
 
     _handleError(err) {
+
+        if(!this._mounted) {
+            return;
+        }
+
         if (this.props.resolveOnError) {
             this._handleSuccess();
         }
