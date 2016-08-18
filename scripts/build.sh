@@ -1,8 +1,17 @@
 #!/bin/bash -e
 
-babel=node_modules/.bin/babel
+# Config
 build_dir=lib
+
+webpack=node_modules/.bin/webpack
+babel=node_modules/.bin/babel
 
 rm -rf $build_dir
 
-$babel ./modules -d $build_dir --ignore "__tests__"
+echo "Building react-preload"
+
+echo "Transpile modules"
+$babel ./modules -d $build_dir
+
+echo "Create dist version for script tags"
+$webpack
