@@ -9,7 +9,6 @@ const ImageHelper = {
                 resolve(image);
             };
             const handleError = () => {
-                console.error('IMAGE FAIL', image);
                 reject(image);
             };
 

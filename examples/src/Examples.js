@@ -6,14 +6,12 @@ const imgBase = 'https://api.fnkr.net/testimg/800x600/00CED1/FFF/?';
 
 export class Example1 extends React.Component {
     _handleImageLoadError = (failedImages) => {
-        console.log('ERROR!', failedImages);
         this.setState({
             preloadError: true,
         });
     }
 
     _handleImageLoadSuccess = () => {
-        console.log('SUCCESS!');
     }
 
     componentWillMount() {
@@ -33,7 +31,7 @@ export class Example1 extends React.Component {
 
         return (
             <Preload
-                loadingIndicator={<Spinner />}
+
                 images={images}
                 onError={this._handleImageLoadError}
                 onSuccess={this._handleImageLoadSuccess}
