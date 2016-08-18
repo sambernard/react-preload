@@ -1,17 +1,8 @@
 {
-    "ecmaFeatures": {
-        "modules": true,
-        "experimentalObjectRestSpread": true,
-        "jsx": true
-    },
-    "env": {
-        "browser": false,
-        "es6": true,
-        "node": true
-    },
-    "globals": {
-        "document": false,
-        "navigator": false,
-        "window": false
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "rules": {
+        "indent": [2, 4],
+        "react/jsx-indent-props": [2, 4]
     }
 }
