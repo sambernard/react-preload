@@ -4,6 +4,8 @@ const cache = [];
 const add = url => {
     if (!hash[url]) {
         hash[url] = new Image();
+        hash[url].crossorigin = 'anonymous';
+        hash[url].crossOrigin = 'anonymous';
         hash[url].src = url;
 
         cache.push(hash[url]);
