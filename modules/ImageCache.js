@@ -1,11 +1,14 @@
 const hash = {};
 const cache = [];
 
-const add = url => {
+const add = (url, options = {}) => {
     if (!hash[url]) {
         hash[url] = new Image();
-        hash[url].crossorigin = 'anonymous';
-        hash[url].crossOrigin = 'anonymous';
+
+        if (options.crossOrigin) {
+            hash[url].crossOrigin = options.crossOrigin;
+        }
+
         hash[url].src = url;
 
         cache.push(hash[url]);
@@ -13,13 +16,13 @@ const add = url => {
     return hash[url];
 };
 
-const get = url => {
-    return add(url);
+const get = (url, options) => {
+    return add(url, options);
 };
 
-const stuff = (urls) => {
+const stuff = (urls, options) => {
     if (urls.length > 0) {
-        urls.map(add);
+        urls.map((url) => add(url, options));
     }
 };
 
