@@ -64,7 +64,10 @@ class Preload extends Component {
                 .then(this._handleSuccess, this._handleError);
 
             if (this.props.autoResolveDelay && this.props.autoResolveDelay > 0) {
-                this.autoResolveTimeout = setTimeout(this._handleSuccess, this.props.autoResolveDelay);
+                this.autoResolveTimeout = setTimeout(() => {
+					console.warn('images failed to preload, auto resolving');
+					this._handleSuccess();
+				}, this.props.autoResolveDelay);
             }
         }
     }
@@ -79,7 +82,6 @@ class Preload extends Component {
     _handleSuccess() {
         if (this.autoResolveTimeout) {
             clearTimeout(this.autoResolveTimeout);
-            console.warn('images failed to preload, auto resolving');
         }
 
         if (this.state.ready || !this._mounted) {
