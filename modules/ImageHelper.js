@@ -1,11 +1,14 @@
 import ImageCache from './ImageCache';
 
 const ImageHelper = {
-    loadImage(url, options) {
+    completedCount: 0,
+    loadImage(url, options, callback) {
+        console.log(url, options, callback)
         const image = ImageCache.get(url, options);
 
         return new Promise((resolve, reject) => {
             const handleSuccess = () => {
+                callback && callback(++this.completedCount);
                 resolve(image);
             };
             const handleError = () => {
@@ -45,8 +48,8 @@ const ImageHelper = {
         });
     },
 
-    loadImages(urls, options) {
-        const promises = urls.map(url =>  this.loadImage(url, options));
+    loadImages(urls, options, callback) {
+        const promises = urls.map(url =>  this.loadImage(url, options, callback));
         return Promise.all(promises).catch((err) => {
             console.warn(err.message);
         });

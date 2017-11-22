@@ -21,6 +21,9 @@ const propTypes = {
     // Success callback
     onSuccess: PropTypes.func,
 
+    // getProgress
+    getProgress: PropTypes.func,
+
     // Whether or not we should still show the content
     // even if there is a preloading error
     resolveOnError: PropTypes.bool,
@@ -43,6 +46,7 @@ class Preload extends Component {
 
         this.state = {
             ready: false,
+            completedCount: 0,
         };
 
         this._handleSuccess = this._handleSuccess.bind(this);
@@ -60,7 +64,7 @@ class Preload extends Component {
         this._mounted = true;
         if (!this.state.ready) {
             ImageHelper
-                .loadImages(this.props.images)
+                .loadImages(this.props.images, {}, this.updateProgress)
                 .then(this._handleSuccess, this._handleError);
 
             if (this.props.autoResolveDelay && this.props.autoResolveDelay > 0) {
@@ -74,6 +78,10 @@ class Preload extends Component {
         if (this.autoResolveTimeout) {
             clearTimeout(this.autoResolveTimeout);
         }
+    }
+
+    updateProgress = (completedCount) => {
+        this.props.getProgress(completedCount, this.props.images.length);
     }
 
     _handleSuccess() {
