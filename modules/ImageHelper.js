@@ -49,6 +49,7 @@ const ImageHelper = {
     },
 
     loadImages(urls, options, callback) {
+        this.completedCount = 0;
         const promises = urls.map(url =>  this.loadImage(url, options, callback));
         return Promise.all(promises).catch((err) => {
             console.warn(err.message);
