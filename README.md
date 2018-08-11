@@ -1,7 +1,7 @@
 # React Preload
 [![npm version](https://badge.fury.io/js/react-preload.svg)](http://badge.fury.io/js/react-preload)
 
-A React component to preload images. It renders a passed component during the loader phase, and renders it's children once the images have been successfully fetched.
+A React component to preload images. It renders a passed component during the loader phase, and renders its children once the images have been successfully fetched.
 
 
 ## Installation
@@ -19,53 +19,53 @@ var Preload = require('react-preload').Preload;
 ```
 
 ```javascript
-var loadingIndicator = (<div>Loading...</div>)
+var loadingIndicator = (<div>Loading...</div>);
 var images = [];
 
 <Preload
-  loadingIndicator={loadingIndicator}
-  images={images}
-  autoResolveDelay={3000}
-  onError={this._handleImageLoadError}
-  onSuccess={this._handleImageLoadSuccess}
-  resolveOnError={true}
-  mountChildren={true}
-  >
-	{/* content to be rendered once loading is complete*/}
+    loadingIndicator={loadingIndicator}
+    images={images}
+    autoResolveDelay={3000}
+    onError={this._handleImageLoadError}
+    onSuccess={this._handleImageLoadSuccess}
+    resolveOnError={true}
+    mountChildren={true}
+>
+    {/* content to be rendered once loading is complete */}
 </Preload>
 ```
 
 ## Prop types
 
 ```javascript
-   propTypes: {
-		//Rendered on success
-		children: React.PropTypes.element.isRequired,
+propTypes: {
+    // Rendered on success
+    children: React.PropTypes.element.isRequired,
 
-		//Rendered during load
-		loadingIndicator: React.PropTypes.node.isRequired,
+    // Rendered during load
+    loadingIndicator: React.PropTypes.node.isRequired, // Default: null
 
-		//Array of image urls to be preloaded
-		images: React.PropTypes.array,
+    // Array of image urls to be preloaded
+    images: React.PropTypes.array, // Default: []
 
-		//If set, the preloader will automatically show
-		//the children content after this amount of time
-		autoResolveDelay: React.PropTypes.number,
+    // If set, the preloader will automatically show
+    // the children content after this amount of time
+    autoResolveDelay: React.PropTypes.number,
 
-		//Error callback. Is passed the error
-		onError: React.PropTypes.func,
+    // Error callback. Is passed the error
+    onError: React.PropTypes.func,
 
-		//Success callback
-		onSuccess: React.PropTypes.func,
+    // Success callback
+    onSuccess: React.PropTypes.func,
 
-		//Whether or not we should still show the content
-		//even if there is a preloading error
-		resolveOnError: React.PropTypes.bool
+    // Whether or not we should still show the content
+    // even if there is a preloading error
+    resolveOnError: React.PropTypes.bool, // Default: true
 
-        //Whether or not we should mount the child content after
-        //images have finished loading (or after autoResolveDelay)
-        mountChildren: React.PropTypes.bool
-    }
+    // Whether or not we should mount the child content after
+    // images have finished loading (or after autoResolveDelay)
+    mountChildren: React.PropTypes.bool, // Default: true
+}
 ```
 
 ## Additional Details
