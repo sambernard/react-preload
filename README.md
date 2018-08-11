@@ -40,31 +40,31 @@ var images = [];
 ```javascript
 propTypes: {
     // Rendered on success
-    children: React.PropTypes.element.isRequired,
+    children: PropTypes.element.isRequired,
 
     // Rendered during load
-    loadingIndicator: React.PropTypes.node.isRequired, // Default: null
+    loadingIndicator: PropTypes.node.isRequired, // Default: null
 
     // Array of image urls to be preloaded
-    images: React.PropTypes.array, // Default: []
+    images: PropTypes.array, // Default: []
 
     // If set, the preloader will automatically show
     // the children content after this amount of time
-    autoResolveDelay: React.PropTypes.number,
+    autoResolveDelay: PropTypes.number,
 
     // Error callback. Is passed the error
-    onError: React.PropTypes.func,
+    onError: PropTypes.func,
 
     // Success callback
-    onSuccess: React.PropTypes.func,
+    onSuccess: PropTypes.func,
 
     // Whether or not we should still show the content
     // even if there is a preloading error
-    resolveOnError: React.PropTypes.bool, // Default: true
+    resolveOnError: PropTypes.bool, // Default: true
 
     // Whether or not we should mount the child content after
     // images have finished loading (or after autoResolveDelay)
-    mountChildren: React.PropTypes.bool, // Default: true
+    mountChildren: PropTypes.bool, // Default: true
 }
 ```
 
