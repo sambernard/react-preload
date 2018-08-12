@@ -26,7 +26,7 @@ export class Example1 extends React.Component {
             `${imgBase}text=1-${this.state.cacheBreaker}`,
             `${imgBase}text=2-${this.state.cacheBreaker}`,
             `${imgBase}text=3-${this.state.cacheBreaker}`,
-            `http://not-a-real-image-url`,
+            `https://not-a-real-image-url`,
         ];
 
         return (

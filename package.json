@@ -27,12 +27,9 @@
   },
   "homepage": "https://github.com/sambernard/react-preload",
   "peerDependencies": {
-    "react": ">=15.0.0",
-    "react-dom": ">=15.0.0"
-  },
-  "dependencies": {
-    "eslint-loader": "^2.1.0",
-    "prop-types": "^15.5.10"
+
+    "react": "^15.0.0",
+    "prop-types": "^15.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -45,11 +42,11 @@
     "babel-preset-stage-2": "^6.24.1",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.0.0",
+    "eslint-loader": "^2.1.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "react-dom": "^15.0.0",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5"
