@@ -2,13 +2,13 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = [{
-  devtool: 'eval',
+  devtool: 'source-map',
   entry: {
     'react-preload': './modules/index',
     'examples': './examples/src/index',
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.resolve('dist'),
     filename: '[name].js',
     libraryTarget: 'var',
     library: 'ReactPreload'
@@ -19,9 +19,9 @@ module.exports = [{
     'react-preload': 'ReactPreload',
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
-      loaders: ['babel'],
+      use: 'babel-loader'
     }]
   }
 }];
