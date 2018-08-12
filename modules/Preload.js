@@ -57,20 +57,24 @@ class Preload extends React.Component {
 
     componentDidMount() {
         this._mounted = true;
-        const { ready } = this.state;
-        if (!ready) {
-            const { images, autoResolveDelay } = this.props;
-            ImageHelper.loadImages(images).then(
-                this._handleSuccess,
-                this._handleError,
-            );
+        this.loadImages();
+    }
 
-            if (autoResolveDelay && autoResolveDelay > 0) {
-                this.autoResolveTimeout = setTimeout(
-                    this._handleAutoResolve,
-                    autoResolveDelay,
-                );
+    componentDidUpdate(prevProps) {
+        const { images } = this.props;
+        const oldImages = new Set(prevProps.images);
+
+        let hasChanged = false;
+        for (let i = 0; i < images.length; i++) {
+            const image = images[i];
+            if (!oldImages.has(image)) {
+                hasChanged = true;
+                break;
             }
+        }
+
+        if (hasChanged) {
+            this.loadImages();
         }
     }
 
@@ -78,6 +82,21 @@ class Preload extends React.Component {
         this._mounted = false;
         if (this.autoResolveTimeout) {
             clearTimeout(this.autoResolveTimeout);
+        }
+    }
+
+    loadImages = () => {
+        const { images, autoResolveDelay } = this.props;
+        ImageHelper.loadImages(images).then(
+            this._handleSuccess,
+            this._handleError,
+        );
+
+        if (autoResolveDelay && autoResolveDelay > 0) {
+            this.autoResolveTimeout = setTimeout(
+                this._handleAutoResolve,
+                autoResolveDelay,
+            );
         }
     }
 
