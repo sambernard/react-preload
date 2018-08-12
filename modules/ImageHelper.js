@@ -47,9 +47,7 @@ const ImageHelper = {
 
     loadImages(urls, options) {
         const promises = urls.map(url => this.loadImage(url, options));
-        return Promise.all(promises).catch((err) => {
-            console.warn(err.message);
-        });
+        return Promise.all(promises);
     },
 
     // preload without caring about the result
