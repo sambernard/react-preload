@@ -31,10 +31,10 @@ export class Example1 extends React.Component {
 
         return (
             <Preload
-
                 images={images}
                 onError={this._handleImageLoadError}
                 onSuccess={this._handleImageLoadSuccess}
+                loadingIndicator={<Spinner />}
                 mountChildren
                 resolveOnError
             >
