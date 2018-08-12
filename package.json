@@ -1,6 +1,6 @@
 {
   "name": "react-preload",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A component to manage preloading media before showing a component",
   "main": "lib/index.js",
   "scripts": {
