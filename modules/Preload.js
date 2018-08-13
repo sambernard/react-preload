@@ -65,7 +65,7 @@ class Preload extends React.Component {
         const oldImages = new Set(prevProps.images);
 
         let hasChanged = false;
-        for (let i = 0; i < images.length; i++) {
+        for (let i = 0; i < images.length; i += 1) {
             const image = images[i];
             if (!oldImages.has(image)) {
                 hasChanged = true;
