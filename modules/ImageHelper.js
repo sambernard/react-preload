@@ -1,5 +1,8 @@
 import ImageCache from './ImageCache';
 
+const reflect = p => p.then(v => ({v, status: 'fulfilled' }),
+                            e => ({e, status: 'rejected' }));
+
 const ImageHelper = {
     loadImage(url, options) {
         const image = ImageCache.get(url, options);
@@ -46,8 +49,16 @@ const ImageHelper = {
     },
 
     loadImages(urls, options) {
-        const promises = urls.map(url => this.loadImage(url, options));
-        return Promise.all(promises);
+        const promises = urls.map(url =>  reflect(this.loadImage(url, options)));
+        return Promise.all(promises).then((promises) => {
+            return promises.map((p) => {
+                if(p.status !== 'fulfilled') {
+                    throw new Exception('One or more images failed to load');
+                }
+                return p;
+            }
+        )
+        });
     },
 
     // preload without caring about the result
