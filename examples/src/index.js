@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import ExamplePlayer from './ExamplePlayer';
 import { Example1 } from './Examples';
 
