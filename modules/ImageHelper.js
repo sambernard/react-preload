@@ -4,11 +4,13 @@ const reflect = p => p.then(v => ({v, status: 'fulfilled' }),
                             e => ({e, status: 'rejected' }));
 
 const ImageHelper = {
-    loadImage(url, options) {
+    completedCount: 0,
+    loadImage(url, options, callback) {
         const image = ImageCache.get(url, options);
 
         return new Promise((resolve, reject) => {
             const handleSuccess = () => {
+                callback && callback(++this.completedCount);
                 resolve(image);
             };
             const handleError = () => {
@@ -48,16 +50,16 @@ const ImageHelper = {
         });
     },
 
-    loadImages(urls, options) {
-        const promises = urls.map(url =>  reflect(this.loadImage(url, options)));
+    loadImages(urls, options, callback) {
+        if (this.completedCount !== 0) this.completedCount = 0; // 重置0
+        const promises = urls.map(url => reflect(this.loadImage(url, options, callback)));
         return Promise.all(promises).then((promises) => {
             return promises.map((p) => {
-                if(p.status !== 'fulfilled') {
+                if (p.status !== 'fulfilled') {
                     throw new Exception('One or more images failed to load');
                 }
                 return p;
-            }
-        )
+            });
         });
     },
 

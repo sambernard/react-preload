@@ -1,5 +1,5 @@
 import React from 'react';
-import Preload from 'react-preload';
+import Preload from '../../modules/index';
 import Spinner from './Spinner';
 
 const imgBase = 'https://picsum.photos/800/600?';
@@ -28,6 +28,11 @@ export class Example1 extends React.Component {
         })
     }
 
+    _getProgress = (completedCount, total) => {
+        const percent = (Math.round(completedCount/total * 10000)/100).toFixed(2) + '%'
+        console.log(percent);
+    }
+
     render() {
         const images = [
             `${imgBase}text=1-${this.state.cacheBreaker}`,
@@ -38,7 +43,7 @@ export class Example1 extends React.Component {
 
         return (
             <div>
-            <button
+                <button
                     onClick={this._handleClickNewImages}
                     type="button"
                     className="btn btn-primary"
@@ -48,6 +53,7 @@ export class Example1 extends React.Component {
                     onError={this._handleImageLoadError}
                     onSuccess={this._handleImageLoadSuccess}
                     loadingIndicator={<Spinner />}
+                    getProgress={this._getProgress}
                     mountChildren
                     resolveOnError
                 >

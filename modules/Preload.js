@@ -22,6 +22,9 @@ const propTypes = {
     // Success callback
     onSuccess: PropTypes.func,
 
+    // getProgress
+    getProgress: PropTypes.func,
+
     // Whether or not we should still show the content
     // even if there is a preloading error
     resolveOnError: PropTypes.bool,
@@ -37,6 +40,7 @@ const defaultProps = {
     autoResolveDelay: 0,
     onError: null,
     onSuccess: null,
+    getProgress: null,
     resolveOnError: true,
     mountChildren: true,
 };
@@ -87,7 +91,7 @@ class Preload extends React.Component {
 
     loadImages = () => {
         const { images, autoResolveDelay } = this.props;
-        ImageHelper.loadImages(images).then(
+        ImageHelper.loadImages(images, {}, this.updateProgress).then(
             this._handleSuccess,
             this._handleError,
         );
@@ -98,6 +102,10 @@ class Preload extends React.Component {
                 autoResolveDelay,
             );
         }
+    }
+
+    updateProgress = (completedCount) => {
+        this.props.getProgress(completedCount, this.props.images.length);
     }
 
     _handleAutoResolve = () => {
