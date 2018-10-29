@@ -16,13 +16,11 @@ const add = (url, options = {}) => {
     return hash[url];
 };
 
-const get = (url, options) => {
-    return add(url, options);
-};
+const get = (url, options) => add(url, options);
 
 const stuff = (urls, options) => {
     if (urls.length > 0) {
-        urls.map((url) => add(url, options));
+        urls.map(url => add(url, options));
     }
 };
 
