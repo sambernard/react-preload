@@ -11,7 +11,7 @@ rm -rf $build_dir
 echo "Building react-preload"
 
 echo "Transpile modules"
-$babel ./modules -d $build_dir
+$babel ./modules -d $build_dir --presets=es2015,react,stage-0
 
 echo "Create dist version for script tags"
 $webpack
